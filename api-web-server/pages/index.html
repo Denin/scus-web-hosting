@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>UPS Shipping Calculator</title>
+    <script src="./scripts/jquery-3.3.1.min.js"></script>
+    <script src="./scripts/index_scripts.js"></script>
+    <link href="./css/default_style.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="./css/index_style.css" rel="stylesheet" type="text/css" media="screen">
+</head>
+
+<body>
+    <div class="container">
+        <header id="titleBar">
+            <img src="./Images/upslogo.gif" />
+            <big> Shipping Calculator</big>
+            <img class="scLogo" src="./Images/sclogo.png" />
+        </header>
+        <div id="mainBody" class="addForm">
+            <form id="formShippingAddress">
+                <i>Items with * are required</i>
+                <br/>
+                <br/>
+                <label for="custBusinessName"><span>Business Name: <span class="required">*</span></span><input type="text" name="custBusinessName"></label>
+                <label for="custAddr1"><span>Address 1: <span class="required">*</span></span><input type="text" name="custAddr1"></label>
+                <label for="custAddr2"><span>Address 2: </span><input type="text" name="custAddr2"></label>
+                <label for="custAddr3"><span>Address 3: </span><input type="text" name="custAddr3"></label>
+                <label for="custZip"><span>Zip Code: <span class="required">*</span></span><input type="text" name="custZip"></label>
+                <label for="custCity"><span>City: <span class="required">*</span></span><input type="text" name="custCity"></label>
+                <label for="custState"><span>State: <span class="required">*</span></span><input type="text" name="custState"></label>
+                <br/>
+                <label for="pkgSelector"><span>Select a Device</span>
+                <select name="pkgSelector" class="pkgSelector"></select></label>
+
+                <input type="button" name="btnAddPackage" id="btnAddPackage" value="Add Package">
+                <br/>
+                <br/>
+                <div id="packageList">
+                </div>
+                <br/>
+                <div class="submitDiv"><input type="button" id="btnSubmit" value="Submit"></div>
+                <div class="resetDiv"><input type="button" id="btnReset" value="Reset Form"></div>
+                <br/>
+                <br/>
+                <div id="resultList">
+                </div>
+            </form>
+        </div>
+        <div class="modal"></div>
+    </div>
+</body>
+
+</html>

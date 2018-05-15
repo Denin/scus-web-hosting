@@ -1,9 +1,5 @@
 ﻿var siteUrl = config.apiUri + '/site/' + config.siteId;
 
-alert(siteUrl);
-
-//$.get(siteUrl,'', {'Authorization' : oauth.sign("GET", siteUrl)});
-
 var endpoint = URI.parse(siteUrl);
 console.log('URL: ' + 'https://' + siteUrl);
 
@@ -17,6 +13,9 @@ $.ajax(
         dataType: 'json',
         success: function (data) {
             console.log(data);
-        }
+        },
+        error: (function( jqXHR, textStatus ) {
+                alert("Request failed: " + textStatus);
+                })
     }
 )
