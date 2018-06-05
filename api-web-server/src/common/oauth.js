@@ -2,6 +2,7 @@ const randomInt = require('random-int');
 const CryptoJS = require("crypto-js");
 const _ = require('underscore');
 const config = require('../../config/config.js')
+const log = require('./log');
 
 var oauth = (function () {
 

@@ -2,6 +2,9 @@ var express = require('express');
 var app = express();
 var config = require('../config/config');
 var path = require('path');
+const api = require('./common/api');
+const url = require('url');
+const log = require('./common/log.js');
 
 var pagesPath = __dirname;
 
@@ -15,6 +18,19 @@ app.use('/scripts', express.static(path.join(__dirname, '../pages/scripts')));
 app.use('/css', express.static(path.join(__dirname, '../pages/css')));
 app.use('/img', express.static(path.join(__dirname, '../pages/img')));
 
+app.get('/callApi', function(req, res) {
+    api.get(url.resolve(config.api.apiUri, 'site/' + config.api.siteId), function (err, result) {
+        if (err) {
+            done(err);
+            return;
+        }
+        else {
+            res.send(result);
+        }
+    })
+});
+
 var listener = app.listen(config.web.port, config.web.address, function() {
     console.log('Listening on port: ' + listener.address().port);
+    
 });
