@@ -22,6 +22,7 @@ app.get('/callApi', function(req, res) {
     api.get(url.resolve(config.api.apiUri, 'site/' + config.api.siteId), function (err, result) {
         if (err) {
             done(err);
+            console.log(err);
             return;
         }
         else {

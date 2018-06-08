@@ -65,11 +65,11 @@ var oauth = (function () {
 
         // Generate the oauth parameters
         var oauthParams = [
-            { key: 'oauth_consumer_key', value: encode(config.consumerKey) },
+            { key: 'oauth_consumer_key', value: encode(config.api.consumerKey) },
             { key: 'oauth_nonce', value: nonce },
             { key: 'oauth_signature_method', value: 'HMAC-SHA1' },
             { key: 'oauth_timestamp', value: timestamp },
-            { key: 'oauth_token', value: encode(config.accessTokenKey) },
+            { key: 'oauth_token', value: encode(config.api.accessTokenKey) },
             { key: 'oauth_version', value: '1.0' }
         ];
 
@@ -97,7 +97,7 @@ var oauth = (function () {
 
         // Calculate the OAuth Signature
         var base = method + '&' + encode(url) + '&' + encode(formattedParams);
-        var key = encode(config.consumerSecret) + '&' + encode(config.accessTokenSecret);
+        var key = encode(config.api.consumerSecret) + '&' + encode(config.api.accessTokenSecret);
         var signatureBytes = CryptoJS.HmacSHA1(base, key);
         var signature = signatureBytes.toString(CryptoJS.enc.Base64);
 
@@ -107,8 +107,8 @@ var oauth = (function () {
         // Compile the OAuth Header
         var authHeader =
             'OAuth realm="' + url + '", ' +
-            'oauth_consumer_key="' + encode(config.consumerKey) + '", ' +
-            'oauth_token="' + encode(config.accessTokenKey) + '", ' +
+            'oauth_consumer_key="' + encode(config.api.consumerKey) + '", ' +
+            'oauth_token="' + encode(config.api.accessTokenKey) + '", ' +
             'oauth_nonce="' + nonce + '", ' +
             'oauth_timestamp="' + timestamp + '", ' +
             'oauth_signature_method="' + 'HMAC-SHA1' + '", ' +
