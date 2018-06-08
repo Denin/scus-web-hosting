@@ -26,7 +26,24 @@ app.get('/callApi', function(req, res) {
             return;
         }
         else {
-            res.send(result);
+            console.log(result.content);
+            res.send(result.content);
+        }
+    })
+});
+
+app.get('/apiGetBusinessHours', function(req, res) {
+    api.get(url.resolve(config.api.apiUri, 'site/' + config.api.siteId + '/configuration/business')
+    , function (err, result) {
+        if (err) {
+            done(err);
+            console.log(err);
+            return;
+        }
+        else {
+            var jsBusHours = result.content.opening_hours;
+            console.log(jsBusHours);
+            res.send(jsBusHours);
         }
     })
 });

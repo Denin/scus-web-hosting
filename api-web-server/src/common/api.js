@@ -36,9 +36,9 @@ var api = (function () {
             response.on('end', function () {
                 try {
                     jsonContent = JSON.parse(content);
-                    log.info('Json content: %s', JSON.stringify(jsonContent));
+                    //log.info('Json content: %s', JSON.stringify(jsonContent));
                 } catch (e) {
-                    log.info('Non-json content: %s', content);
+                    //log.info('Non-json content: %s', content);
                 }
                 done(null, { status: response.statusCode, content: jsonContent || content });
             });
@@ -49,7 +49,7 @@ var api = (function () {
             });
         }
 
-        log.info('Requesting: %s', url.format(endpoint));
+        //log.info('Requesting: %s', url.format(endpoint));
         if (endpoint.protocol === 'http:') {
             request = http.request(options, apiRequestCallback);
         } else if (endpoint.protocol === 'https:') {

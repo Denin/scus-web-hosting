@@ -87,8 +87,8 @@ var oauth = (function () {
                 return 0;
             }
         });
-        log.info('URL: %s', url);
-        log.info('Parameters: %s', JSON.stringify(sortedParams));
+        //log.info('URL: %s', url);
+        //log.info('Parameters: %s', JSON.stringify(sortedParams));
 
         // Format the parameters back into a single string.
         var formattedParams = _.map(sortedParams, function (param) {
@@ -101,8 +101,8 @@ var oauth = (function () {
         var signatureBytes = CryptoJS.HmacSHA1(base, key);
         var signature = signatureBytes.toString(CryptoJS.enc.Base64);
 
-        log.info('Signing %s with %s', base, key);
-        log.info('Resulting signature is %s', signature);
+        //log.info('Signing %s with %s', base, key);
+        //log.info('Resulting signature is %s', signature);
 
         // Compile the OAuth Header
         var authHeader =
