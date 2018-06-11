@@ -5,6 +5,7 @@ var path = require('path');
 const api = require('./common/api');
 const url = require('url');
 const log = require('./common/log.js');
+var htmlObjects = require('./htmlObjects.js');
 
 var pagesPath = __dirname;
 
@@ -36,14 +37,18 @@ app.get('/apiGetBusinessHours', function(req, res) {
     api.get(url.resolve(config.api.apiUri, 'site/' + config.api.siteId + '/configuration/business')
     , function (err, result) {
         if (err) {
-            done(err);
+            done('<p>Error processing: ' + err + '</p>');
             console.log(err);
             return;
         }
+        if (result.status != 200) {
+            htmlObjects.buildHoursHTML({error: 'Error'});
+        }
         else {
+            console.log(result.status);
             var jsBusHours = result.content.opening_hours;
-            console.log(jsBusHours);
-            res.send(jsBusHours);
+            var busHoursHTML = htmlObjects.buildHoursHTML(jsBusHours);
+            res.send(busHoursHTML);
         }
     })
 });

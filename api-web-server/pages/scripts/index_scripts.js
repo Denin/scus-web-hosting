@@ -3,15 +3,16 @@ function makecall() {
         {
             url: 'http://localhost:3000/apiGetBusinessHours',
             type: 'get',
-            dataType: 'json',
+            dataType: 'html',
             success: function (data) {
                 console.log(data);
                 var element = document.getElementById('mainBody');
-                
-                element.innerHTML = '<p>' + JSON.stringify(data) + '</p>';
+                element.innerHTML = data;
             },
             error: (function( jqXHR, textStatus ) {
-                    alert("Request failed: " + textStatus);
+                    var element = document.getElementById('mainBody');
+                    element.innerHTML = "<p>An error occured while loading.  Please try again later.</p>";
+                    console.log(textStatus);
                     })
         }
     )

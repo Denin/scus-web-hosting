@@ -76,8 +76,7 @@ body {
 }
 
 table,
-th,
-td {
+th {
     border: 1px solid black;
     border-radius: 4px;
 }
@@ -91,13 +90,8 @@ td {
 }
 
 input[type=button] {
-    /* background: #EB3B88; */
     border: 1px solid #000000;
     padding: 5px 15px 5px 15px;
-    /* color: #FFCBE2; */
-    /* box-shadow: inset -1px -1px 3px #FF62A7;
-    -moz-box-shadow: inset -1px -1px 3px #FF62A7;
-    -webkit-box-shadow: inset -1px -1px 3px #FF62A7; */
     border-radius: 3px;
     border-radius: 3px;
     -webkit-border-radius: 3px;
@@ -106,5 +100,5 @@ input[type=button] {
 }
 
 .numEven {
-    background-color: rgba(218, 229, 237, .5);
+    background-color: rgba(127, 190, 235, 0.5);
 }
